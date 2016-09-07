@@ -1,0 +1,35 @@
+<html>
+  <head>
+    <title>Places I Have Been to!</title>
+  </head>
+  <body>
+    <h1>Places I've been</h1>
+    {% if places is not empty %}
+        <p>Here are all the places I've been:</p>
+        <ul>
+            {% for place in places %}
+                <li>{{ place.getCity }}</li>
+                <ul>
+                    <li>{{place.getLength}}</li>
+                    <img src={{ place.getImage }}>
+                </ul>
+            {% endfor %}
+        </ul>
+    {% endif %}
+
+    <form action='/places' method='post'>
+        <label for='cityName'>City Name</label>
+        <input id='cityName' name='cityName' type='text'>
+        <label for='cityImage'>City Image</label>
+        <input id='cityImage' name='cityImage' type='text'>
+        <label for='tripLength'>Trip Length</label>
+        <input id='tripLength' name='tripLength' type='text'>
+
+        <button type='submit'>Add Place</button>
+    </form>
+
+    <form action="/delete" method="post">
+      <button type="submit">Delete Entries</button>
+    </form>
+  </body>
+</html>
